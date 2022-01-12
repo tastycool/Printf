@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digit.c                                      :+:      :+:    :+:   */
+/*   int_lenght.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 13:21:06 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 15:12:20 by tberube-         ###   ########.fr       */
+/*   Created: 2022/01/12 14:49:54 by tberube-          #+#    #+#             */
+/*   Updated: 2022/01/12 14:52:25 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_digit(t_print *suivi)
+#include "ft_printf.h"
+
+unsigned int	ft_intlen(long n)
 {
-	int		digit;
-	int		pr_digit;
-	char	*result;
-	
-	pr_digit = 0;
-	digit = va_arg(suivi->lst, int);
-	result = malloc(sizeof(char) * int_lenght(suivi));
-	if (digit == 0)
-		write(1, "0", 1);
-	if (digit < 0)
+	unsigned int	len;
+	unsigned int	num;
+
+	len = 0;
+	if (n < 0)
 	{
-		digit = -digit;
-		write(1, "-", 1);
+		len++;
+		num = -n;
 	}
-	while (digit != 0)
+	else
+		num = n;
+	if (num == 0)
+		len++;
+	while (num > 0)
 	{
-		result[pr_digit] = digit % 10 + '0';
-		digit /= 10;
-		pr_digit++;
+		len++;
+		num /= 10;
 	}
-	while (--pr_digit >= 0)
-		write(1, &result[pr_digit], 1);
-	free(result);
+	return (len);
 }

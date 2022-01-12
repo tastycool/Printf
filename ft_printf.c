@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:57:13 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 12:41:24 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:16:03 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ int	main()
 {
 	char str[] = "salut comment sa vas?";
 	//printf("%d", str);
-	ft_printf(str);
+	ft_printf("allo %c" );
 }
