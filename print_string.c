@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 14:30:41 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 11:27:35 by tberube-         ###   ########.fr       */
+/*   Created: 2022/01/12 11:19:07 by tberube-          #+#    #+#             */
+/*   Updated: 2022/01/12 11:48:37 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <stdarg.h>
+void print_string(t_print *suivi)
+{
+	char *str;
 
-typedef struct s_print
- {
-	const char *format;
- 	va_list	lst;
-	int	total_lenght;
- 	int bytes;
- }	t_print;
+	str = va_arg(suivi->lst, char *);
+	while (*str)
+	{
+		write(1, &str, 1);
+		suivi->bytes++;
+		str++;
+	}
+	suivi->format++;
+}
 
-#endif
+//printf("Salut %s j'ai %d ans", "Bobby", 16);
