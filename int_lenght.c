@@ -6,33 +6,31 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:49:54 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 14:52:25 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:30:12 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#include "ft_printf.h"
-
-unsigned int	ft_intlen(long n)
+#include <stdio.h>
+int	int_lenght(long long numb, int valeur)
 {
-	unsigned int	len;
-	unsigned int	num;
-
+	int	len;
+	long long	num;
+	
 	len = 0;
-	if (n < 0)
+	if (numb < 0)
 	{
 		len++;
-		num = -n;
+		num = -numb;
 	}
 	else
-		num = n;
+		num = numb;
 	if (num == 0)
 		len++;
 	while (num > 0)
 	{
 		len++;
-		num /= 10;
+		num /= valeur;
 	}
 	return (len);
 }

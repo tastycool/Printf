@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:57:13 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 13:16:03 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:18:220 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,32 @@
 
 int	ft_flag(t_print *suivi)
 {
+	char c;
+	
 	suivi->format++;
 	if (*suivi->format == 'c')
 	{
-		ft_putchar_fd(*suivi->format, 1);
+		c = va_arg(suivi->lst, int);
+		ft_putchar_fd(c, 1);
 		suivi->bytes++;
 	}
 	else if (*suivi->format == 's')
-		print_string(suivi);
+		ft_print_string(suivi);
 	else if (*suivi->format == 'p' || *suivi->format == 'x' || *suivi->format == 'X')
-		print_hexa(suivi);
+	 	ft_print_hexa(suivi);
 	else if (*suivi->format == 'd' || *suivi->format == 'i')
-		print_digit(suivi);
+		ft_print_digit(suivi);
 	else if (*suivi->format == 'u')
-		print_digit(suivi);
+		ft_print_digit(suivi);
 	else if (*suivi->format == '%')
 	{
 		ft_putchar_fd('%', 1);
 		suivi->bytes++;
 	}
 	suivi->format++;
+	return (suivi->bytes);
 }
 
-//%c %s %p %d %i %u %xX %%
 int	ft_printf(const char *format, ...)
 {
 	t_print	*suivi;
@@ -46,17 +49,16 @@ int	ft_printf(const char *format, ...)
 
 	suivi = ft_calloc(1, sizeof(t_print));
 	if (!suivi)
-		return (NULL);
-	suivi->format + 1;
+		return (0);
 	va_start(suivi->lst, format);
 	suivi->format = format;
 	while (*suivi->format)
 	{
 		if (*suivi->format == '%')
-				ft_flag(suivi);
+			ft_flag(suivi);
 		else
 		{
-			write(1, &suivi->format, 1);
+			write(1, &*suivi->format, 1);
 			suivi->format++;
 			suivi->bytes++;
 		}
@@ -65,11 +67,4 @@ int	ft_printf(const char *format, ...)
 	len = suivi->bytes;
 	free(suivi);
 	return (len);
-}
-
-int	main()
-{
-	char str[] = "salut comment sa vas?";
-	//printf("%d", str);
-	ft_printf("allo %c" );
 }

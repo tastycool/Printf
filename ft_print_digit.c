@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digit.c                                      :+:      :+:    :+:   */
+/*   ft_print_digit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:21:06 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/12 15:12:20 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:28:49 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_digit(t_print *suivi)
+void	ft_print_digit(t_print *suivi)
 {
-	int		digit;
-	int		pr_digit;
-	char	*result;
+	long long	digit;
 	
-	pr_digit = 0;
-	digit = va_arg(suivi->lst, int);
-	result = malloc(sizeof(char) * int_lenght(suivi));
-	if (digit == 0)
-		write(1, "0", 1);
+	if (*suivi->format == 'u')
+		digit = (unsigned int)va_arg(suivi->lst, long long);
+	if (*suivi->format == 'd' || *suivi->format == 'i')
+		digit = (int)va_arg(suivi->lst, long long);
+	suivi->bytes += int_lenght(digit, 10);
 	if (digit < 0)
 	{
-		digit = -digit;
 		write(1, "-", 1);
+		digit = -digit;
 	}
-	while (digit != 0)
-	{
-		result[pr_digit] = digit % 10 + '0';
-		digit /= 10;
-		pr_digit++;
-	}
-	while (--pr_digit >= 0)
-		write(1, &result[pr_digit], 1);
-	free(result);
+	ft_putnbr_fd(digit, BASE_10, BASE_DEC, 1);
 }
