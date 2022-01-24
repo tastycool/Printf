@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:42:36 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/18 09:29:12 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/24 09:42:22 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_hexa(t_print *suivi)
 {
 	size_t	hexadigit;
 	size_t	tmp;
-	
+
 	if (*suivi->format == 'x' || *suivi->format == 'X')
 		hexadigit = (unsigned int)va_arg(suivi->lst, size_t);
 	if (*suivi->format == 'p')

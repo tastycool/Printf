@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:57:13 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/17 14:18:220 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/24 09:53:06 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	ft_flag(t_print *suivi)
 {
-	char c;
-	
+	char	c;
+
 	suivi->format++;
 	if (*suivi->format == 'c')
 	{
@@ -27,8 +27,9 @@ int	ft_flag(t_print *suivi)
 	}
 	else if (*suivi->format == 's')
 		ft_print_string(suivi);
-	else if (*suivi->format == 'p' || *suivi->format == 'x' || *suivi->format == 'X')
-	 	ft_print_hexa(suivi);
+	else if (*suivi->format == 'p' || *suivi->format == 'x' || \
+	*suivi->format == 'X')
+		ft_print_hexa(suivi);
 	else if (*suivi->format == 'd' || *suivi->format == 'i')
 		ft_print_digit(suivi);
 	else if (*suivi->format == 'u')
@@ -45,7 +46,7 @@ int	ft_flag(t_print *suivi)
 int	ft_printf(const char *format, ...)
 {
 	t_print	*suivi;
-	int	len;
+	int		len;
 
 	suivi = ft_calloc(1, sizeof(t_print));
 	if (!suivi)

@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:21:06 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/18 09:28:49 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/24 09:42:01 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_print_digit(t_print *suivi)
 {
 	long long	digit;
-	
+
 	if (*suivi->format == 'u')
 		digit = (unsigned int)va_arg(suivi->lst, long long);
 	if (*suivi->format == 'd' || *suivi->format == 'i')
