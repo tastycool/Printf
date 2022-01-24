@@ -6,7 +6,7 @@
 /*   By: tberube- <tberube-@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 09:42:36 by tberube-          #+#    #+#             */
-/*   Updated: 2022/01/24 09:42:22 by tberube-         ###   ########.fr       */
+/*   Updated: 2022/01/24 10:15:17 by tberube-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	ft_print_hexa(t_print *suivi)
 	if (*suivi->format == 'p')
 	{
 		suivi->bytes += write(1, "0x", 2);
-		ft_putnbr_fd(hexadigit, BASE_16, Base_HEX, 1);
+		ft_putnbr_fd(hexadigit, BASE_16, BASE_HEX, 1);
 	}
 	else if (*suivi->format == 'x')
-		ft_putnbr_fd(hexadigit, BASE_16, Base_HEX, 1);
+		ft_putnbr_fd(hexadigit, BASE_16, BASE_HEX, 1);
 	else if (*suivi->format == 'X')
 		ft_putnbr_fd(hexadigit, BASE_16, BASE_HEXM, 1);
 }
